@@ -1,0 +1,24 @@
+.icon{
+    width: 50px;
+    object-fit: cover;
+    object-position: center;
+}
+.navbar{
+    width: 95%;
+    margin: auto;
+}
+.post-img{
+    width: 90%;
+    margin: auto;
+}
+.size{
+    font-size: 2em;
+    
+}
+.dots:hover{
+    border-radius: 100%;
+    background-color: rgb(221, 218, 218);
+}
+.custom-shadow{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
