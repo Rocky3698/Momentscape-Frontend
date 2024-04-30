@@ -1,22 +1,22 @@
 var user_id = localStorage.getItem("user_id");
 const load_myPosts = () => {
-    fetch(`http://127.0.0.1:8000/post/posts/?user_id=${user_id}`)
+    fetch(`https://momentscape.onrender.com/post/posts/?user_id=${user_id}`)
         .then((res) => res.json())
         .then((data) => displayPosts(data))
         .catch((err) => console.log(err));
 }
 const reacts_comments = (post_id) => {
-    var reactPromise = fetch(`http://127.0.0.1:8000/post/react/?post_id=${post_id}`)
+    var reactPromise = fetch(`https://momentscape.onrender.com/post/react/?post_id=${post_id}`)
         .then((res) => res.json())
         .then((data) => data.length)
         .catch((err) => console.log(err));
 
-    var likePromise = fetch(`http://127.0.0.1:8000/post/react/?post_id=${post_id}&like=true`)
+    var likePromise = fetch(`https://momentscape.onrender.com/post/react/?post_id=${post_id}&like=true`)
         .then((res) => res.json())
         .then((data) => data.length)
         .catch((err) => console.log(err));
 
-    var commentPromise = fetch(`http://127.0.0.1:8000/post/comment/?post_id=${post_id}`)
+    var commentPromise = fetch(`https://momentscape.onrender.com/post/comment/?post_id=${post_id}`)
         .then((res) => res.json())
         .then((data) => data.length)
         .catch((err) => console.log(err));
@@ -60,10 +60,10 @@ const get_time = (created_at) => {
 
 const user_info = (user_id) => {
     if (user_id) {
-        return fetch(`http://127.0.0.1:8000/account/profile/?user_id=${user_id}`)
+        return fetch(`https://momentscape.onrender.com/account/profile/?user_id=${user_id}`)
             .then((res) => res.json())
             .then((photo) => {
-                return fetch(`http://127.0.0.1:8000/users/?user_id=${user_id}`)
+                return fetch(`https://momentscape.onrender.com/users/?user_id=${user_id}`)
                     .then((res) => res.json())
                     .then((user) => {
                         return { name: `${user[0].first_name} ${user[0].last_name}`, dp: photo[0].dp };

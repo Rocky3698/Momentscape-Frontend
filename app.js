@@ -1,5 +1,5 @@
 const loadPosts = () => {
-    fetch("http://127.0.0.1:8000/post/posts/")
+    fetch("https://momentscape.onrender.com/post/posts/")
         .then((res) => res.json())
         .then((data) => displayPosts(data))
         .catch((err) => console.log(err));
@@ -7,17 +7,17 @@ const loadPosts = () => {
 
 
 const reacts_comments = (post_id) => {
-    var reactPromise = fetch(`http://127.0.0.1:8000/post/react/?post_id=${post_id}`)
+    var reactPromise = fetch(`https://momentscape.onrender.com/post/react/?post_id=${post_id}`)
         .then((res) => res.json())
         .then((data) => data.length)
         .catch((err) => console.log(err));
 
-    var likePromise = fetch(`http://127.0.0.1:8000/post/react/?post_id=${post_id}&like=true`)
+    var likePromise = fetch(`https://momentscape.onrender.com/post/react/?post_id=${post_id}&like=true`)
         .then((res) => res.json())
         .then((data) => data.length)
         .catch((err) => console.log(err));
 
-    var commentPromise = fetch(`http://127.0.0.1:8000/post/comment/?post_id=${post_id}`)
+    var commentPromise = fetch(`https://momentscape.onrender.com/post/comment/?post_id=${post_id}`)
         .then((res) => res.json())
         .then((data) => data.length)
         .catch((err) => console.log(err));
@@ -61,10 +61,10 @@ const get_time = (created_at) => {
 
 const user_info = (user_id) => {
     if (user_id) {
-        return fetch(`http://127.0.0.1:8000/account/profile/?user_id=${user_id}`)
+        return fetch(`https://momentscape.onrender.com/account/profile/?user_id=${user_id}`)
             .then((res) => res.json())
             .then((photo) => {
-                return fetch(`http://127.0.0.1:8000/users/?user_id=${user_id}`)
+                return fetch(`https://momentscape.onrender.com/users/?user_id=${user_id}`)
                     .then((res) => res.json())
                     .then((user) => {
                         return { name: `${user[0].first_name} ${user[0].last_name}`, dp: photo[0].dp };
@@ -135,7 +135,7 @@ const load_user = () => {
     console.log(userId);
     const profile = document.getElementById('profile');
     if (userId) {
-        fetch(`http://127.0.0.1:8000/account/profile/?user_id=${userId}`)
+        fetch(`https://momentscape.onrender.com/account/profile/?user_id=${userId}`)
             .then((res) => res.json())
             .then((data) => {
                 profile.innerHTML = `
@@ -143,7 +143,7 @@ const load_user = () => {
                 `;
             })
             .catch((err) => console.log(err));
-        fetch(`http://127.0.0.1:8000/users/?user_id=${userId}`)
+        fetch(`https://momentscape.onrender.com/users/?user_id=${userId}`)
             .then((res) => res.json())
             .then((data) => {
                 const div = document.createElement('div');
@@ -167,7 +167,7 @@ const creat_post = () => {
         "video_url": null,
         "user": userId
     }
-    fetch("http://127.0.0.1:8000/post/posts/", {
+    fetch("https://momentscape.onrender.com/post/posts/", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(post),
@@ -196,7 +196,7 @@ const creatComments = (post_id) => {
     }
 
     if (post_id) {
-        fetch("http://127.0.0.1:8000/post/comment/", {
+        fetch("https://momentscape.onrender.com/post/comment/", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(info),
@@ -219,7 +219,7 @@ const like_post = (post_id) => {
         "post": post_id
     }
     if (post_id) {
-        fetch("http://127.0.0.1:8000/post/react/", {
+        fetch("https://momentscape.onrender.com/post/react/", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(info),
@@ -241,7 +241,7 @@ const dislike_post = (post_id) => {
         "post": post_id
     }
     if (post_id) {
-        fetch("http://127.0.0.1:8000/post/react/", {
+        fetch("https://momentscape.onrender.com/post/react/", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(info),

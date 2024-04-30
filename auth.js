@@ -38,7 +38,7 @@ const Registration = (event) => {
     if (password === confirm_password) {
         document.getElementById("error").innerText = "";
         console.log(user_info);
-        fetch("http://127.0.0.1:8000/account/register/", {
+        fetch("https://momentscape.onrender.com/account/register/", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(user_info),
@@ -64,7 +64,7 @@ const Login = (event) => {
     console.log(username, password);
     
     if (username && password) {
-        fetch("http://127.0.0.1:8000/account/login/", {
+        fetch("https://momentscape.onrender.com/account/login/", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({ username, password }),
