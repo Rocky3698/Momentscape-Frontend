@@ -181,10 +181,7 @@ const creat_post = () => {
         });
 }
 
-const getValue = (id) => {
-    const value = document.getElementById(id).value;
-    return value;
-};
+
 
 const creatComments = (post_id) => {
     comment=document.getElementById("comment").value;

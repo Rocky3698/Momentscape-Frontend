@@ -12,10 +12,10 @@ const Registration = (event) => {
     const postal_code = getValue("postal_code");
     const gender = getValue("gender");
     const dp = document.getElementById("image").files[0];
-    const phone_number=getValue("phone");
-    const country=getValue("country");
+    const phone_number = getValue("phone");
+    const country = getValue("country");
     const is_superuser = false;
-    
+
     const user_info =
     {
         username,
@@ -24,7 +24,7 @@ const Registration = (event) => {
         email,
         password,
         confirm_password,
-        "dp":null,
+        "dp": null,
         gender,
         phone_number,
         city,
@@ -62,7 +62,7 @@ const Login = (event) => {
     const username = getValue("login-username");
     const password = getValue("login-password");
     console.log(username, password);
-    
+
     if (username && password) {
         fetch("https://momentscape.onrender.com/account/login/", {
             method: "POST",
@@ -73,7 +73,7 @@ const Login = (event) => {
             .then((data) => {
                 console.log(data);
                 if (data.user_id) {
-                    localStorage.setItem("user_id", data.user_id,"token",data.token);
+                    localStorage.setItem("user_id", data.user_id, "token", data.token);
                     window.location.href = "home.html";
                 } else {
                     console.log("Invalid credentials or error occurred");
@@ -85,4 +85,23 @@ const Login = (event) => {
     } else {
         console.log("Both username and password are required");
     }
+};
+
+
+const handlelogOut = () => {
+    const token = localStorage.getItem("token");
+    fetch("https://momentscape.onrender.com/account/logout/", {
+        method: "GET",
+        headers: {
+            Authorization: `Token ${token}`,
+            "Content-Type": "application/json",
+        },
+    })
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+            localStorage.removeItem("token");
+            localStorage.removeItem("user_id");
+            window.location.href = "index.html";
+        });
 };
