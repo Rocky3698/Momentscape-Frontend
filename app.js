@@ -122,7 +122,7 @@ const displayPosts = async (posts) => {
                 <p></p>
                 <!-- Button trigger modal -->
                 <p type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <i onclick="creat_post()" class="fa-solid fa-comment size"></i> <small>${result.comment} comments</small>
+                    <i onclick="show_post_modal(${post.id})" class="fa-solid fa-comment size"></i> <small>${result.comment} comments</small>
                 </p>
             </div>`;
         parent.appendChild(div);
@@ -131,7 +131,6 @@ const displayPosts = async (posts) => {
 
 var userId = localStorage.getItem("user_id");
 const load_user = () => {
-
     console.log(userId);
     const profile = document.getElementById('profile');
     if (userId) {
@@ -182,9 +181,8 @@ const creat_post = () => {
 }
 
 
-
 const creatComments = (post_id) => {
-    comment=document.getElementById("comment").value;
+    comment = document.getElementById("comment").value;
     const info =
     {
         "content": comment,
@@ -252,5 +250,69 @@ const dislike_post = (post_id) => {
             });
     }
 }
+const show_comments = (comments) => {
+    const parent = document.getElementById('comments');
+    comments.forEach((comment) => {
+        div=document.createElement('div');
+        div.classList.add('write-comments', 'd-flex', 'align-items-center', 'justify-content-start', 'ms-5');
+        div.innerHTML=`
+        <img class="icon rounded-5" src="images/profile.jpg" alt="">
+        <div class="m-2 py-1 px-3 rounded-3 custom-shadow ">
+            <div class="d-flex align-items-center justify-content-between">
+                <small class="fw-bold">Rcoky Chowdhury</small>
+                <small class="fw-bold">9m </small>
+            </div>
+            <p class="mb-0">${comment.content}</p>
+        </div>
+        `;
+        parent.appendChild(div);
+    })
+
+}
+
+const show_post_modal = (post_id) => {
+    fetch(`https://momentscape.onrender.com/post/posts/?post_id=${post_id}`)
+        .then(async (res) => {
+            const data = await res.json();
+            // console.log(data);
+            const info = await user_info(data[0].user);
+            // console.log(info);
+            const time = await get_time(data[0].created_at);
+            // console.log(time);
+            const react = await reacts_comments(data[0].id);
+            // console.log(react);
+            const owner_place = document.getElementById('post_creator');
+            const time_place = document.getElementById('created_time');
+            const profile = document.getElementById('post_creator_profile');
+            const post_owner = document.getElementById('exampleModalLabel');
+            const post_image = document.getElementById('post_image');
+            const post_content = document.getElementById('post_content');
+            const post_reacts = document.getElementById('post_reacts');
+            const post_comments = document.getElementById('post_comments');
+            owner_place.innerText = info.name;
+            time_place.innerText = time;
+            profile.src = info.dp;
+            post_image.src = data[0].image;
+            post_content.innerText = data[0].content;
+            post_owner.innerText = `${info.name}'s Post`;
+            post_reacts.innerText = `${react.like} likes ${react.dislike} dislikes`;
+            post_comments.innerText = `${react.comment} comments`;
+
+            fetch(`https://momentscape.onrender.com/post/comment/?post_id=${data[0].id}`)
+                .then(async (res) => {
+                    const data = await res.json();
+                    console.log(data);
+                    const comment = document.getElementById('comments');
+                    comment.innerHTML = ``;
+                    show_comments(data)
+                })
+                .catch((err) => console.log(err));
+
+        })
+        .catch((err) => console.log(err));
+}
+
+
+
 load_user();
 loadPosts();
