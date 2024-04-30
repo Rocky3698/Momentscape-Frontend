@@ -1,11 +1,10 @@
-const loadPosts = () => {
-    fetch("http://127.0.0.1:8000/post/posts/")
+var user_id = localStorage.getItem("user_id");
+const load_myPosts = () => {
+    fetch(`http://127.0.0.1:8000/post/posts/?user_id=${user_id}`)
         .then((res) => res.json())
         .then((data) => displayPosts(data))
         .catch((err) => console.log(err));
-};
-
-
+}
 const reacts_comments = (post_id) => {
     var reactPromise = fetch(`http://127.0.0.1:8000/post/react/?post_id=${post_id}`)
         .then((res) => res.json())
@@ -73,10 +72,8 @@ const user_info = (user_id) => {
             .catch((err) => console.log(err));
     }
 };
-
-
 const displayPosts = async (posts) => {
-    const parent = document.getElementById("posts");
+    const parent = document.getElementById("my_post");
     parent.innerHTML = ``;
     for (const post of posts) {
         const time = await get_time(post.created_at);
@@ -122,138 +119,10 @@ const displayPosts = async (posts) => {
                 <p></p>
                 <!-- Button trigger modal -->
                 <p type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    <i onclick="creat_post()" class="fa-solid fa-comment size"></i> <small>${result.comment} comments</small>
+                    <i class="fa-solid fa-comment size"></i> <small>${result.comment} comments</small>
                 </p>
             </div>`;
         parent.appendChild(div);
     }
 }
-
-var userId = localStorage.getItem("user_id");
-const load_user = () => {
-
-    console.log(userId);
-    const profile = document.getElementById('profile');
-    if (userId) {
-        fetch(`http://127.0.0.1:8000/account/profile/?user_id=${userId}`)
-            .then((res) => res.json())
-            .then((data) => {
-                profile.innerHTML = `
-                <img  class="icon rounded-5" src="${data[0].dp}" alt="profile">
-                `;
-            })
-            .catch((err) => console.log(err));
-        fetch(`http://127.0.0.1:8000/users/?user_id=${userId}`)
-            .then((res) => res.json())
-            .then((data) => {
-                const div = document.createElement('div');
-                div.classList.add('ms-2');
-                div.innerHTML = `
-                <h5 class="m-0 p-0">${data[0].first_name} ${data[0].last_name}</h5>
-                <small class="m-0 p-0">Public</small>
-                `;
-                profile.appendChild(div);
-            })
-            .catch((err) => console.log(err));
-    }
-
-}
-const creat_post = () => {
-    const content = getValue('content');
-    console.log(content);
-    const post = {
-        content,
-        "image": null,
-        "video_url": null,
-        "user": userId
-    }
-    fetch("http://127.0.0.1:8000/post/posts/", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(post),
-    })
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data);
-        })
-        .catch(error => {
-            console.error("Error occurred during fetch:", error);
-        });
-}
-
-const getValue = (id) => {
-    const value = document.getElementById(id).value;
-    return value;
-};
-
-const creatComments = (post_id) => {
-    comment=document.getElementById("comment").value;
-    const info =
-    {
-        "content": comment,
-        "user": userId,
-        "post": post_id
-    }
-
-    if (post_id) {
-        fetch("http://127.0.0.1:8000/post/comment/", {
-            method: "POST",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify(info),
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-            })
-            .catch(error => {
-                console.error("Error occurred during fetch:", error);
-            });
-    }
-}
-
-const like_post = (post_id) => {
-    const info = {
-        "like": true,
-        "dislike": false,
-        "user": userId,
-        "post": post_id
-    }
-    if (post_id) {
-        fetch("http://127.0.0.1:8000/post/react/", {
-            method: "POST",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify(info),
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-            })
-            .catch(error => {
-                console.error("Error occurred during fetch:", error);
-            });
-    }
-}
-const dislike_post = (post_id) => {
-    const info = {
-        "like": false,
-        "dislike": true,
-        "user": userId,
-        "post": post_id
-    }
-    if (post_id) {
-        fetch("http://127.0.0.1:8000/post/react/", {
-            method: "POST",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify(info),
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-            })
-            .catch(error => {
-                console.error("Error occurred during fetch:", error);
-            });
-    }
-}
-load_user();
-loadPosts();
+load_myPosts();

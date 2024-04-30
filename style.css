@@ -1,7 +1,6 @@
 .icon{
     width: 50px;
-    object-fit: cover;
-    object-position: center;
+    height: 50px;
 }
 .navbar{
     width: 95%;
@@ -21,4 +20,11 @@
 }
 .custom-shadow{
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.c-shadow{
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+.post-img{
+    object-fit: cover;
+    object-position: center;
 }
