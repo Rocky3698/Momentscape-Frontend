@@ -189,7 +189,7 @@ const creatComments = (post_id) => {
         "user": userId,
         "post": post_id
     }
-
+    console.log(info);
     if (post_id) {
         fetch("https://momentscape.onrender.com/post/comment/", {
             method: "POST",
@@ -250,24 +250,29 @@ const dislike_post = (post_id) => {
             });
     }
 }
-const show_comments = (comments) => {
+const show_comments = async (comments) => {
     const parent = document.getElementById('comments');
-    comments.forEach((comment) => {
-        div=document.createElement('div');
+    const comment_submit = document.getElementById('comment_submit');
+    comments.forEach(async (comment) => { 
+        const info = await user_info(comment.user);
+        const time = await get_time(comment.created_at);
+        comment_submit.addEventListener('click', () => {
+            creatComments(comment.post);
+        });
+        const div = document.createElement('div');
         div.classList.add('write-comments', 'd-flex', 'align-items-center', 'justify-content-start', 'ms-5');
-        div.innerHTML=`
-        <img class="icon rounded-5" src="images/profile.jpg" alt="">
-        <div class="m-2 py-1 px-3 rounded-3 custom-shadow ">
-            <div class="d-flex align-items-center justify-content-between">
-                <small class="fw-bold">Rcoky Chowdhury</small>
-                <small class="fw-bold">9m </small>
+        div.innerHTML = `
+            <img class="icon rounded-5" src="${info.dp}" alt="">
+            <div class="m-2 py-1 px-3 rounded-3 custom-shadow ">
+                <div class="d-flex align-items-center justify-content-between">
+                    <small class="fw-bold me-3">${info.name}</small>
+                    <small class="fw-bold">${time}</small>
+                </div>
+                <p class="mb-0">${comment.content}</p>
             </div>
-            <p class="mb-0">${comment.content}</p>
-        </div>
         `;
         parent.appendChild(div);
-    })
-
+    });
 }
 
 const show_post_modal = (post_id) => {
