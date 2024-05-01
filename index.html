@@ -39,290 +39,75 @@
                         <a class="nav-link  fs-5 " aria-current="page" href="registration.html">Registration</a>
                     </li>
                 </ul>
-                
+
             </div>
         </div>
     </nav>
 
-    <section class="posts w-75 m-auto mt-3 rounded-2 p-3">
-        <div class="d-flex flex-column gap-3">
-            <div class="w-50 m-auto bg-light rounded-3 p-4">
-                <div class="d-flex align-items-center">
-                    <img class="icon rounded-5" src="images/profile.jpg" alt="">
-                    <div class="ms-2">
-                        <h5 class="m-0 p-0">Rocky Chowdhury</h5>
-                        <small class="m-0 p-0">2h ago</small>
-                    </div>
-                    <a class="fa-solid fa-ellipsis dots ms-auto me-2 nav-link p-2" href="#" id="dropdownRight"
-                        role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+    <section>
+        <div class="d-flex mt-3">
+            <div class="create-post col">
 
-                    <ul class="dropdown-menu border-secondary-subtle" aria-labelledby="dropdownRight">
-                        <li><a class="dropdown-item" href="#">My Profile</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
-                    </ul>
+            </div>
+            <div class="posts col">
+                <div id="posts" class="d-flex flex-column gap-3 w-100">
+
                 </div>
-                <p class="mt-2 ms-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam sunt veniam rerum
-                    repellendus animi
-                    fuga culpa nostrum quam, incidunt eligendi praesentium sequi obcaecati est non, adipisci,
-                    exercitationem
-                    corrupti tempora cumque?
-                </p>
-                <div class="post-img">
-                    <img class="img-fluid" src="images/image.png" alt="">
+            </div>
+            <div class="friends col"></div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal modal-lg fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 " id="exampleModalLabel">Rocky's Post</h1>
+                    <a type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></a>
                 </div>
-                <div class="d-flex align-items-center justify-content-between mt-3 px-4">
-                    <div class="ms-2">
-                        <a class="fa-solid fa-thumbs-up size text-decoration-none text-secondary" href="#"
-                            id="dropdownRight" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
-                        <small>3 likes and 5 dislikes</small>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <p class="d-flex m-0">
-                                <a class="dropdown-item fa-solid fa-thumbs-up size text-decoration-none"></a>
-                                <a class="dropdown-item fa-solid fa-thumbs-down size text-decoration-none"></a>
-                            </p>
-                        </div>
-                    </div>
-                    <p></p>
-                    <!-- Button trigger modal -->
-                    <p type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <i class="fa-solid fa-comment size"></i> <small>8 comments</small>
-                    </p>
-
-                    <!-- Modal -->
-                    <div class="modal modal-lg fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                            <div class="modal-content ">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5 " id="exampleModalLabel">Rocky's Post</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="m-auto bg-light rounded-3 p-4">
-                                        <div class="d-flex align-items-center">
-                                            <img class="icon rounded-5" src="images/profile.jpg" alt="">
-                                            <div class="ms-2">
-                                                <h5 class="m-0 p-0">Rocky Chowdhury</h5>
-                                                <small class="m-0 p-0">2h ago</small>
-                                            </div>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                fill="currentColor" class="bi bi-three-dots-vertical ms-auto me-2"
-                                                viewBox="0 0 16 16">
-                                                <path
-                                                    d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
-                                            </svg>
-                                        </div>
-                                        <p class="mt-2 ms-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                                            Aliquam sunt veniam rerum
-                                            repellendus animi
-                                            fuga culpa nostrum quam, incidunt eligendi praesentium sequi obcaecati est
-                                            non, adipisci,
-                                            exercitationem
-                                            corrupti tempora cumque?
-                                        </p>
-                                        <div class="post-img">
-                                            <img class="img-fluid" src="images/image.png" alt="">
-                                        </div>
-                                        <hr class="mb-0 p-0"
-                                            style="height:1px;border:none;color:#3d3d3d;background-color:#4e4e4e;">
-                                        <div class="d-flex align-items-center justify-content-between mt-2 px-4">
-                                            <p class="ms-2"><i class="fa-solid fa-thumbs-up size"></i> <small>3 likes
-                                                    and 5 dislikes</small></p>
-                                            <p><i class="fa-solid fa-comment size"></i> <small>8 comments</small></p>
-                                        </div>
-                                        <hr class="m-0 p-0"
-                                            style="height:1px;border:none;color:#333;background-color:#333;">
-                                    </div>
-
-                                    <div class="comments">
-                                        <div
-                                            class="write-comments d-flex align-items-center justify-content-start  ms-5">
-                                            <img class="icon rounded-5" src="images/profile.jpg" alt="">
-                                            <p class="m-3 p-3 rounded-3 custom-shadow ">nice post. well captured</p>
-                                        </div>
-                                        <div
-                                            class="write-comments d-flex align-items-center justify-content-start  ms-5">
-                                            <img class="icon rounded-5" src="images/profile.jpg" alt="">
-                                            <p class="m-3 p-3 rounded-3 custom-shadow ">nice post. well captured</p>
-                                        </div>
-                                        <div class="write-comments d-flex align-items-center ms-5">
-                                            <img class="icon rounded-5 " src="images/profile.jpg" alt="">
-                                            <p class="m-3 p-3 rounded-3 custom-shadow ">nice post. well captured</p>
-                                        </div>
-                                        <div
-                                            class="write-comments d-flex align-items-center justify-content-start  ms-5">
-                                            <img class="icon rounded-5" src="images/profile.jpg" alt="">
-                                            <p class="m-3 p-3 rounded-3 custom-shadow ">nice post. well captured</p>
-                                        </div>
-                                        <div
-                                            class="write-comments d-flex align-items-center justify-content-start  ms-5">
-                                            <img class="icon rounded-5" src="images/profile.jpg" alt="">
-                                            <p class="m-3 p-3 rounded-3 custom-shadow ">nice post. well captured. Go
-                                                keep it up. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                                Tempora, nemo.</p>
-                                        </div>
-                                        <div
-                                            class="write-comments d-flex align-items-center justify-content-start  ms-5">
-                                            <img class="icon rounded-5" src="images/profile.jpg" alt="">
-                                            <p class="m-3 p-3 rounded-3 custom-shadow ">nice post. well captured</p>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="modal-footer justify-content-start">
-                                    <div class="write-comments d-flex align-items-center col-12">
-                                        <img class="icon rounded-5" src="images/profile.jpg" alt="">
-                                        <input type="text" class="form-control ms-2 " placeholder="write a comment...">
-                                        <button type="button" class=" mx-3 btn btn-primary ">Comment</button>
-                                    </div>
-                                </div>
+                <div class="modal-body">
+                    <div class="m-auto bg-light rounded-3 p-4">
+                        <div class="d-flex align-items-center">
+                            <img id="post_creator_profile" class="icon rounded-5" src="" alt="">
+                            <div class="ms-2">
+                                <h5 id="post_creator" class="m-0 p-0"></h5>
+                                <small id="created_time" class="m-0 p-0"></small>
                             </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-three-dots-vertical ms-auto me-2" viewBox="0 0 16 16">
+                                <path
+                                    d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
+                            </svg>
                         </div>
+                        <p id="post_content" class="mt-2 ms-3"></p>
+                        <div class="post-img">
+                            <img id="post_image" class="img-fluid" src="" alt="">
+                        </div>
+                        <hr class="mb-0 p-0" style="height:1px;border:none;color:#3d3d3d;background-color:#4e4e4e;">
+                        <div class="d-flex align-items-center justify-content-between mt-2 px-4">
+                            <p class="ms-2"><i class="fa-solid fa-thumbs-up size"></i> <small id="post_reacts">3 likes
+                                    and 5 dislikes</small></p>
+                            <p><i class="fa-solid fa-comment size"></i> <small id="post_comments">8 comments</small></p>
+                        </div>
+                        <hr class="m-0 p-0" style="height:1px;border:none;color:#333;background-color:#333;">
+                    </div>
+
+                    <div id="comments" class="comments">
+
                     </div>
                 </div>
-            </div>
-            <div class="w-50 m-auto bg-light rounded-3 p-4">
-                <div class="d-flex align-items-center">
-                    <img class="icon rounded-5" src="images/profile.jpg" alt="">
-                    <div class="ms-2">
-                        <h5 class="m-0 p-0">Rocky Chowdhury</h5>
-                        <small class="m-0 p-0">2h ago</small>
+                <div class="modal-footer justify-content-start">
+                    <div class="write-comments d-flex align-items-center col-12">
+                        <img class="icon rounded-5" src="images/profile.jpg" alt="">
+                        <input id="comment" type="text" class="form-control ms-2 " placeholder="write a comment...">
+                        <button id="comment_submit" type="button" class=" mx-3 btn btn-primary ">Comment</button>
                     </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-three-dots-vertical ms-auto me-2" viewBox="0 0 16 16">
-                        <path
-                            d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
-                    </svg>
-                </div>
-                <p class="mt-2 ms-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam sunt veniam rerum
-                    repellendus animi
-                    fuga culpa nostrum quam, incidunt eligendi praesentium sequi obcaecati est non, adipisci,
-                    exercitationem
-                    corrupti tempora cumque?
-                </p>
-                <div class="post-img">
-                    <img class="img-fluid" src="images/image.png" alt="">
-                </div>
-                <div class="d-flex align-items-center justify-content-between mt-3 px-4">
-                    <p class="ms-2"><i class="fa-solid fa-thumbs-up size"></i> <small>3 likes and 5 dislikes</small></p>
-                    <p><i class="fa-solid fa-comment size"></i> <small>8 comments</small></p>
-                </div>
-            </div>
-            <div class="w-50 m-auto bg-light rounded-3 p-4">
-                <div class="d-flex align-items-center">
-                    <img class="icon rounded-5" src="images/profile.jpg" alt="">
-                    <div class="ms-2">
-                        <h5 class="m-0 p-0">Rocky Chowdhury</h5>
-                        <small class="m-0 p-0">2h ago</small>
-                    </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-three-dots-vertical ms-auto me-2" viewBox="0 0 16 16">
-                        <path
-                            d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
-                    </svg>
-                </div>
-                <p class="mt-2 ms-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam sunt veniam rerum
-                    repellendus animi
-                    fuga culpa nostrum quam, incidunt eligendi praesentium sequi obcaecati est non, adipisci,
-                    exercitationem
-                    corrupti tempora cumque?
-                </p>
-                <div class="post-img">
-                    <img class="img-fluid" src="images/image.png" alt="">
-                </div>
-                <div class="d-flex align-items-center justify-content-between mt-3 px-4">
-                    <p class="ms-2"><i class="fa-solid fa-thumbs-up size"></i> <small>3 likes and 5 dislikes</small></p>
-                    <p><i class="fa-solid fa-comment size"></i> <small>8 comments</small></p>
-                </div>
-            </div>
-            <div class="w-50 m-auto bg-light rounded-3 p-4">
-                <div class="d-flex align-items-center">
-                    <img class="icon rounded-5" src="images/profile.jpg" alt="">
-                    <div class="ms-2">
-                        <h5 class="m-0 p-0">Rocky Chowdhury</h5>
-                        <small class="m-0 p-0">2h ago</small>
-                    </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-three-dots-vertical ms-auto me-2" viewBox="0 0 16 16">
-                        <path
-                            d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
-                    </svg>
-                </div>
-                <p class="mt-2 ms-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam sunt veniam rerum
-                    repellendus animi
-                    fuga culpa nostrum quam, incidunt eligendi praesentium sequi obcaecati est non, adipisci,
-                    exercitationem
-                    corrupti tempora cumque?
-                </p>
-                <div class="post-img">
-                    <img class="img-fluid" src="images/image3.png" alt="">
-                </div>
-                <div class="d-flex align-items-center justify-content-between mt-3 px-4">
-                    <p class="ms-2"><i class="fa-solid fa-thumbs-up size"></i> <small>3 likes and 5 dislikes</small></p>
-                    <p><i class="fa-solid fa-comment size"></i> <small>8 comments</small></p>
-                </div>
-            </div>
-            <div class="w-50 m-auto bg-light rounded-3 p-4">
-                <div class="d-flex align-items-center">
-                    <img class="icon rounded-5" src="images/profile.jpg" alt="">
-                    <div class="ms-2">
-                        <h5 class="m-0 p-0">Rocky Chowdhury</h5>
-                        <small class="m-0 p-0">2h ago</small>
-                    </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-three-dots-vertical ms-auto me-2" viewBox="0 0 16 16">
-                        <path
-                            d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
-                    </svg>
-                </div>
-                <p class="mt-2 ms-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam sunt veniam rerum
-                    repellendus animi
-                    fuga culpa nostrum quam, incidunt eligendi praesentium sequi obcaecati est non, adipisci,
-                    exercitationem
-                    corrupti tempora cumque?
-                </p>
-                <div class="post-img">
-                    <img class="img-fluid" src="images/image2.png" alt="">
-                </div>
-                <div class="d-flex align-items-center justify-content-between mt-3 px-4">
-                    <p class="ms-2"><i class="fa-solid fa-thumbs-up size"></i> <small>3 likes and 5 dislikes</small></p>
-                    <p><i class="fa-solid fa-comment size"></i> <small>8 comments</small></p>
-                </div>
-            </div>
-            <div class="w-50 m-auto bg-light rounded-3 p-4">
-                <div class="d-flex align-items-center">
-                    <img class="icon rounded-5" src="images/profile.jpg" alt="">
-                    <div class="ms-2">
-                        <h5 class="m-0 p-0">Rocky Chowdhury</h5>
-                        <small class="m-0 p-0">2h ago</small>
-                    </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-three-dots-vertical ms-auto me-2" viewBox="0 0 16 16">
-                        <path
-                            d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
-                    </svg>
-                </div>
-                <p class="mt-2 ms-3">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam sunt veniam rerum
-                    repellendus animi
-                    fuga culpa nostrum quam, incidunt eligendi praesentium sequi obcaecati est non, adipisci,
-                    exercitationem
-                    corrupti tempora cumque?
-                </p>
-                <div class="post-img">
-                    <img class="img-fluid" src="images/image1.png" alt="">
-                </div>
-                <div class="d-flex align-items-center justify-content-between mt-3 px-4">
-                    <p class="ms-2"><i class="fa-solid fa-thumbs-up size"></i> <small>3 likes and 5 dislikes</small></p>
-                    <p><i class="fa-solid fa-comment size"></i> <small>8 comments</small></p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
 
     <script src="app.js"></script>

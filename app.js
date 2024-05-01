@@ -76,13 +76,14 @@ const user_info = (user_id) => {
 
 
 const displayPosts = async (posts) => {
+    console.log(posts);
     const parent = document.getElementById("posts");
     parent.innerHTML = ``;
     for (const post of posts) {
         const time = await get_time(post.created_at);
         const result = await reacts_comments(post.id);
         const info = await user_info(post.user);
-        // console.log(info);
+        // console.log(post.id);
         const div = document.createElement('div');
         div.classList.add('m-auto', 'bg-light', 'rounded-3', 'p-4', 'custom-shadow', 'w-100');
         div.innerHTML = `
@@ -181,30 +182,6 @@ const creat_post = () => {
 }
 
 
-const creatComments = (post_id) => {
-    comment = document.getElementById("comment").value;
-    const info =
-    {
-        "content": comment,
-        "user": userId,
-        "post": post_id
-    }
-    console.log(info);
-    if (post_id) {
-        fetch("https://momentscape.onrender.com/post/comment/", {
-            method: "POST",
-            headers: { "content-type": "application/json" },
-            body: JSON.stringify(info),
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-            })
-            .catch(error => {
-                console.error("Error occurred during fetch:", error);
-            });
-    }
-}
 
 const like_post = (post_id) => {
     const info = {
@@ -250,6 +227,34 @@ const dislike_post = (post_id) => {
             });
     }
 }
+
+
+const creatComments = (post_id) => {
+    
+    comment = document.getElementById("comment").value;
+    const info =
+    {
+        "content": comment,
+        "user": userId,
+        "post": post_id
+    }
+
+    if (post_id) {
+        fetch("https://momentscape.onrender.com/post/comment/", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(info),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+            })
+            .catch(error => {
+                console.error("Error occurred during fetch:", error);
+            });
+    }
+}
+
 const show_comments = async (comments) => {
     const parent = document.getElementById('comments');
     const comment_submit = document.getElementById('comment_submit');
@@ -276,10 +281,11 @@ const show_comments = async (comments) => {
 }
 
 const show_post_modal = (post_id) => {
+    console.log(post_id);
     fetch(`https://momentscape.onrender.com/post/posts/?post_id=${post_id}`)
         .then(async (res) => {
             const data = await res.json();
-            // console.log(data);
+            console.log(data);
             const info = await user_info(data[0].user);
             // console.log(info);
             const time = await get_time(data[0].created_at);
@@ -302,14 +308,15 @@ const show_post_modal = (post_id) => {
             post_owner.innerText = `${info.name}'s Post`;
             post_reacts.innerText = `${react.like} likes ${react.dislike} dislikes`;
             post_comments.innerText = `${react.comment} comments`;
-
+            // console.log('feching');
             fetch(`https://momentscape.onrender.com/post/comment/?post_id=${data[0].id}`)
                 .then(async (res) => {
                     const data = await res.json();
                     console.log(data);
                     const comment = document.getElementById('comments');
                     comment.innerHTML = ``;
-                    show_comments(data)
+                    if (data.length)
+                        show_comments(data);
                 })
                 .catch((err) => console.log(err));
 
